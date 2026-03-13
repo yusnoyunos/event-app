@@ -41,7 +41,7 @@
               <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 text-sm text-slate-200 sm:px-6 md:px-10 lg:px-12">
               <Link href="/" className="flex items-center gap-2 group">
                 {/* MOBILE: h-10 w-10 | DESKTOP: md:h-16 md:w-16 */}
-                  <div className="relative h-10 w-10 transition-transform md:h-16 md:w-16 group-hover:scale-105">
+                  <div className="relative h-12 w-12 transition-transform md:h-16 md:w-16 group-hover:scale-105">
                     <Image 
                             src="/TIM-Logo.png" 
                       alt="Tech in Malaysia Logo"
