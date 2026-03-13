@@ -4,6 +4,31 @@ import Image from "next/image";
 import { easeOut, motion, type Variants } from "framer-motion";
 import { ArrowRight, CalendarDays, MapPin, Users } from "lucide-react";
 
+function AgendaRow({
+  time,
+  session,
+  stage,
+  shaded,
+}: {
+  time: string;
+  session: string;
+  stage: string;
+  shaded?: boolean;
+}) {
+  return (
+    <div
+      className={[
+        "grid grid-cols-[minmax(0,1.05fr)_minmax(0,2.6fr)_minmax(0,1.35fr)] px-4 py-3",
+        shaded ? "bg-slate-900/40" : "",
+      ].join(" ")}
+    >
+      <span className="text-slate-400">{time}</span>
+      <span className="font-medium text-slate-50">{session}</span>
+      <span className="text-slate-200">{stage}</span>
+    </div>
+  );
+}
+
 const sectionVariant: Variants = {
   hidden: { opacity: 0, y: 40 },
   visible: (i: number) => ({
@@ -39,7 +64,7 @@ export default function Home() {
         <div className="relative z-10 flex flex-1 flex-col justify-center gap-10 px-5 pt-10 sm:px-8 md:px-12 lg:px-16 lg:pt-0">
           <div className="inline-flex items-center gap-2 self-start rounded-full border border-teal-400/40 bg-black/40 px-3 py-1 text-xs font-medium text-teal-100 shadow-[0_0_0_1px_rgba(45,212,191,0.45)] backdrop-blur">
             <span className="inline-flex h-1.5 w-1.5 rounded-full bg-teal-400 shadow-[0_0_12px_rgba(45,212,191,0.9)]" />
-            Live in Kuala Lumpur · July 2026
+            Kuala Lumpur Convention Centre · 15–17 July 2026
           </div>
 
           <div className="grid gap-10 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] lg:items-center">
@@ -85,9 +110,7 @@ export default function Home() {
                     <CalendarDays className="h-4 w-4 text-teal-300" />
                     Date
                   </dt>
-                  <dd className="mt-1 font-semibold text-slate-50">
-                    18–20 July 2026
-                  </dd>
+                  <dd className="mt-1 font-semibold text-slate-50">15–17 July 2026</dd>
                 </div>
                 <div>
                   <dt className="flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.18em] text-slate-300">
@@ -95,7 +118,7 @@ export default function Home() {
                     Venue
                   </dt>
                   <dd className="mt-1 font-semibold text-slate-50">
-                    Kuala Lumpur, Malaysia
+                    Kuala Lumpur Convention Centre
                   </dd>
                 </div>
                 <div>
@@ -184,8 +207,13 @@ export default function Home() {
               </p>
               <p className="text-sm leading-relaxed text-slate-300 sm:text-[0.95rem]">
                 Expect deeply produced keynotes, hands-on labs, and curated networking moments
-                across three days. We bring together voices from AI, fintech, climate, and
-                frontier tech to design the next chapter of the ecosystem—together.
+                across 2.5 days. We bring together voices from AI, fintech, climate, and frontier
+                tech to design the next chapter of the ecosystem—together.
+              </p>
+              <p className="text-sm leading-relaxed text-slate-300 sm:text-[0.95rem]">
+                Plus: a curated <span className="text-teal-200">Exhibition Hall</span> featuring
+                startups, enterprise demos, community booths, and hands-on product showcases—all
+                day during conference hours.
               </p>
             </div>
 
@@ -199,7 +227,7 @@ export default function Home() {
               <div className="flex items-center justify-between border-y border-slate-800/80 py-3">
                 <span className="text-slate-400">Format</span>
                 <span className="text-right font-semibold text-slate-50">
-                  3 days · 2 tracks · curated side events
+                  2.5 days · Main Stage + Labs · Exhibition Hall
                 </span>
               </div>
               <div className="flex items-center justify-between">
@@ -223,11 +251,10 @@ export default function Home() {
           <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <h2 className="text-lg font-semibold tracking-tight text-slate-50 sm:text-xl">
-                Schedule preview
+                Agenda (2.5 days)
               </h2>
               <p className="text-xs text-slate-400 sm:text-sm">
-                A focused, single-track experience during the day with intimate breakouts in the
-                evening.
+                Each day runs 10:00–17:30 (lunch at 13:00). The final day ends at 13:30.
               </p>
             </div>
             <a
@@ -238,41 +265,75 @@ export default function Home() {
             </a>
           </div>
 
-          <div className="overflow-hidden rounded-2xl border border-slate-800/80 bg-slate-950/80">
-            <div className="grid grid-cols-[minmax(0,1.1fr)_minmax(0,2.4fr)_minmax(0,1.4fr)] border-b border-slate-800 bg-slate-900/80 px-4 py-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-400 sm:text-xs">
-              <span>Time</span>
-              <span>Session</span>
-              <span>Stage</span>
+          <div className="space-y-6">
+            {/* Day 1 */}
+            <div className="overflow-hidden rounded-2xl border border-slate-800/80 bg-slate-950/80">
+              <div className="flex flex-col gap-1 border-b border-slate-800 bg-slate-900/80 px-4 py-3">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-teal-200">
+                  Day 1 · Tue 15 July 2026
+                </p>
+                <p className="text-xs text-slate-400">
+                  Exhibition Hall open 10:00–17:30
+                </p>
+              </div>
+
+              <div className="divide-y divide-slate-800/80 text-xs text-slate-200 sm:text-sm">
+                <AgendaRow time="10:00" session="Doors open · Registration + coffee" stage="Concourse" />
+                <AgendaRow time="10:30" session="Opening keynote: The next decade of Malaysian tech" stage="Main Stage" shaded />
+                <AgendaRow time="11:15" session="Panel: AI adoption in enterprises (from pilots to production)" stage="Main Stage" />
+                <AgendaRow time="12:00" session="Founder lightning talks: 5 builders · 5 minutes each" stage="Main Stage" shaded />
+                <AgendaRow time="13:00" session="Lunch break + Exhibition Hall networking" stage="Exhibition Hall" />
+                <AgendaRow time="14:00" session="Breakouts: Cloud-native reliability · Security-by-design · Data platforms" stage="Labs" shaded />
+                <AgendaRow time="15:10" session="Fireside: Building globally from KL" stage="Main Stage" />
+                <AgendaRow time="16:00" session="Exhibitor demos: curated product showcases" stage="Exhibition Hall" shaded />
+                <AgendaRow time="16:45" session="Closing keynote: Talent, education, and the builder pipeline" stage="Main Stage" />
+                <AgendaRow time="17:30" session="Day close" stage="—" shaded />
+              </div>
             </div>
 
-            <div className="divide-y divide-slate-800/80 text-xs text-slate-200 sm:text-sm">
-              <div className="grid grid-cols-[minmax(0,1.1fr)_minmax(0,2.4fr)_minmax(0,1.4fr)] px-4 py-3">
-                <span className="text-slate-400">09:00</span>
-                <span className="font-medium text-slate-50">
-                  Opening keynote: Malaysia&apos;s decade of deep tech
-                </span>
-                <span>Main Hall</span>
+            {/* Day 2 */}
+            <div className="overflow-hidden rounded-2xl border border-slate-800/80 bg-slate-950/80">
+              <div className="flex flex-col gap-1 border-b border-slate-800 bg-slate-900/80 px-4 py-3">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-violet-200">
+                  Day 2 · Wed 16 July 2026
+                </p>
+                <p className="text-xs text-slate-400">
+                  Exhibition Hall open 10:00–17:30
+                </p>
               </div>
-              <div className="grid grid-cols-[minmax(0,1.1fr)_minmax(0,2.4fr)_minmax(0,1.4fr)] bg-slate-900/40 px-4 py-3">
-                <span className="text-slate-400">10:30</span>
-                <span className="font-medium text-slate-50">
-                  Panels: AI governance · Climate infra · Fintech infra
-                </span>
-                <span>Builders Lab</span>
+
+              <div className="divide-y divide-slate-800/80 text-xs text-slate-200 sm:text-sm">
+                <AgendaRow time="10:00" session="Morning coffee + Exhibition Hall open" stage="Exhibition Hall" />
+                <AgendaRow time="10:30" session="Keynote: Fintech infrastructure for ASEAN scale" stage="Main Stage" shaded />
+                <AgendaRow time="11:15" session="Panel: Future of payments, identity, and compliance" stage="Main Stage" />
+                <AgendaRow time="12:00" session="Workshop: From monolith to modular (practical migration patterns)" stage="Builders Lab" shaded />
+                <AgendaRow time="13:00" session="Lunch break + curated 1:1 meetings" stage="Lounge + Exhibition" />
+                <AgendaRow time="14:00" session="Track sessions: AI safety · Agentic systems · MLOps in the real world" stage="Labs" shaded />
+                <AgendaRow time="15:10" session="Case study: Scaling platform engineering with small teams" stage="Main Stage" />
+                <AgendaRow time="16:00" session="Startup showcase: 8 companies · rapid pitches" stage="Main Stage" shaded />
+                <AgendaRow time="16:45" session="Community & partners spotlight + Exhibition Hall final walk-through" stage="Exhibition Hall" />
+                <AgendaRow time="17:30" session="Day close" stage="—" shaded />
               </div>
-              <div className="grid grid-cols-[minmax(0,1.1fr)_minmax(0,2.4fr)_minmax(0,1.4fr)] px-4 py-3">
-                <span className="text-slate-400">13:30</span>
-                <span className="font-medium text-slate-50">
-                  Founder stories: Building from Kuala Lumpur to the world
-                </span>
-                <span>Main Hall</span>
+            </div>
+
+            {/* Day 3 (Half day) */}
+            <div className="overflow-hidden rounded-2xl border border-slate-800/80 bg-slate-950/80">
+              <div className="flex flex-col gap-1 border-b border-slate-800 bg-slate-900/80 px-4 py-3">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-teal-200">
+                  Day 3 · Thu 17 July 2026 (Half day)
+                </p>
+                <p className="text-xs text-slate-400">
+                  Exhibition Hall open 10:00–13:30
+                </p>
               </div>
-              <div className="grid grid-cols-[minmax(0,1.1fr)_minmax(0,2.4fr)_minmax(0,1.4fr)] bg-slate-900/40 px-4 py-3">
-                <span className="text-slate-400">18:30</span>
-                <span className="font-medium text-slate-50">
-                  Night sessions: Investor roundtables & ecosystem salons
-                </span>
-                <span>Off-site venues</span>
+
+              <div className="divide-y divide-slate-800/80 text-xs text-slate-200 sm:text-sm">
+                <AgendaRow time="10:00" session="Coffee + final exhibition hours" stage="Exhibition Hall" />
+                <AgendaRow time="10:30" session="Keynote: Climate & green tech as national infrastructure" stage="Main Stage" shaded />
+                <AgendaRow time="11:15" session="Policy forum: Regulation that accelerates innovation" stage="Policy Forum" />
+                <AgendaRow time="12:00" session="Roundtables: CTO circle · Founder circle · Investor circle" stage="Lounges" shaded />
+                <AgendaRow time="13:00" session="Closing remarks + thank you" stage="Main Stage" />
+                <AgendaRow time="13:30" session="Conference close" stage="—" shaded />
               </div>
             </div>
           </div>
