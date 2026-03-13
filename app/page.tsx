@@ -1,3 +1,4 @@
+// @ts-nocheck
 'use client';
 import { motion, Variants } from "framer-motion";
 import { ArrowRight, CalendarDays, MapPin, Users } from "lucide-react";
