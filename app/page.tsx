@@ -1,11 +1,10 @@
-// @ts-nocheck
-'use client';
-import { motion, Variants } from "framer-motion";
+"use client";
+
+import Image from "next/image";
+import { easeOut, motion, type Variants } from "framer-motion";
 import { ArrowRight, CalendarDays, MapPin, Users } from "lucide-react";
 
- 
-
-const sectionVariant = {
+const sectionVariant: Variants = {
   hidden: { opacity: 0, y: 40 },
   visible: (i: number) => ({
     opacity: 1,
@@ -13,24 +12,33 @@ const sectionVariant = {
     transition: {
       delay: 0.2 + i * 0.15,
       duration: 0.7,
-      ease: "easeOut",
+      ease: easeOut,
     },
   }),
 };
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900/80 to-black text-slate-100">
-      <div className="mx-auto flex min-h-screen max-w-6xl flex-col px-4 pb-16 pt-24 sm:px-6 md:px-10 lg:px-12 lg:pt-28">
-        {/* Hero */}
-        <motion.section
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-          className="flex flex-1 flex-col justify-center gap-10 pb-16"
-        >
-          <div className="inline-flex items-center gap-2 self-start rounded-full border border-slate-800/80 bg-slate-900/60 px-3 py-1 text-xs font-medium text-slate-300 shadow-[0_0_0_1px_rgba(15,23,42,0.8)] backdrop-blur">
-            <span className="inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_12px_rgba(52,211,153,0.8)]" />
+    <div className="mx-auto flex min-h-[calc(100vh-4rem)] max-w-6xl flex-col px-4 pb-16 pt-20 sm:px-6 md:px-10 lg:px-12 lg:pt-24">
+      {/* Hero */}
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: easeOut }}
+        className="relative flex min-h-[calc(100vh-5rem)] flex-col justify-center gap-10 overflow-hidden rounded-3xl border border-slate-800/80 bg-slate-950/80 pb-16 shadow-[0_40px_140px_rgba(15,23,42,1)]"
+      >
+        <Image
+          src="/event-hero-image.jpg"
+          alt="Tech in Malaysia Conference 2026 in Kuala Lumpur"
+          fill
+          priority
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-black/60" />
+
+        <div className="relative z-10 flex flex-1 flex-col justify-center gap-10 px-5 pt-10 sm:px-8 md:px-12 lg:px-16 lg:pt-0">
+          <div className="inline-flex items-center gap-2 self-start rounded-full border border-teal-400/40 bg-black/40 px-3 py-1 text-xs font-medium text-teal-100 shadow-[0_0_0_1px_rgba(45,212,191,0.45)] backdrop-blur">
+            <span className="inline-flex h-1.5 w-1.5 rounded-full bg-teal-400 shadow-[0_0_12px_rgba(45,212,191,0.9)]" />
             Live in Kuala Lumpur · July 2026
           </div>
 
@@ -38,12 +46,12 @@ export default function Home() {
             <div className="space-y-8">
               <h1 className="text-balance text-4xl font-semibold tracking-tight text-slate-50 sm:text-5xl md:text-6xl">
                 Tech in Malaysia
-                <span className="block bg-gradient-to-r from-emerald-400 via-cyan-400 to-sky-500 bg-clip-text text-transparent">
+                <span className="block bg-gradient-to-r from-teal-300 via-teal-400 to-violet-400 bg-clip-text text-transparent">
                   Conference 2026
                 </span>
               </h1>
 
-              <p className="max-w-xl text-pretty text-sm text-slate-300 sm:text-base md:text-lg">
+              <p className="max-w-xl text-pretty text-sm text-slate-200 sm:text-base md:text-lg">
                 A high-end, invite-first gathering of founders, engineers, and investors shaping
                 the next decade of Malaysian and Southeast Asian technology.
               </p>
@@ -51,56 +59,59 @@ export default function Home() {
               <div className="flex flex-wrap items-center gap-4">
                 <motion.a
                   href="#register"
-                  whileHover={{ scale: 1.02, boxShadow: "0 0 40px rgba(56,189,248,0.6)" }}
+                  whileHover={{
+                    scale: 1.02,
+                    boxShadow: "0 0 40px rgba(45,212,191,0.7)",
+                  }}
                   whileTap={{ scale: 0.98 }}
-                  className="group relative inline-flex items-center gap-2 rounded-full bg-cyan-400 px-7 py-3 text-sm font-semibold text-slate-950 shadow-[0_0_40px_rgba(34,211,238,0.45)] transition-all hover:bg-cyan-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+                  className="group relative inline-flex items-center gap-2 rounded-full bg-teal-400 px-7 py-3 text-sm font-semibold text-slate-950 shadow-[0_0_40px_rgba(45,212,191,0.6)] transition-all hover:bg-teal-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
                 >
-                  <span className="absolute inset-0 rounded-full bg-cyan-400/40 blur-xl" />
+                  <span className="absolute inset-0 rounded-full bg-teal-300/50 blur-xl" />
                   <span className="relative">Register</span>
                   <ArrowRight className="relative h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                 </motion.a>
 
                 <a
                   href="#about"
-                  className="inline-flex items-center gap-2 text-xs font-medium text-slate-300 underline-offset-4 hover:text-slate-100 hover:underline sm:text-sm"
+                  className="inline-flex items-center gap-2 text-xs font-medium text-slate-200 underline-offset-4 hover:text-teal-200 hover:underline sm:text-sm"
                 >
                   View conference vision
                 </a>
               </div>
 
-              <dl className="mt-4 grid grid-cols-2 gap-4 text-xs text-slate-300 sm:grid-cols-4 sm:text-sm">
+              <dl className="mt-4 grid grid-cols-2 gap-4 text-xs text-slate-200 sm:grid-cols-4 sm:text-sm">
                 <div>
-                  <dt className="flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.18em] text-slate-400">
-                    <CalendarDays className="h-4 w-4 text-cyan-400" />
+                  <dt className="flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.18em] text-slate-300">
+                    <CalendarDays className="h-4 w-4 text-teal-300" />
                     Date
                   </dt>
-                  <dd className="mt-1 font-semibold text-slate-100">
+                  <dd className="mt-1 font-semibold text-slate-50">
                     18–20 July 2026
                   </dd>
                 </div>
                 <div>
-                  <dt className="flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.18em] text-slate-400">
-                    <MapPin className="h-4 w-4 text-emerald-400" />
+                  <dt className="flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.18em] text-slate-300">
+                    <MapPin className="h-4 w-4 text-violet-300" />
                     Venue
                   </dt>
-                  <dd className="mt-1 font-semibold text-slate-100">
+                  <dd className="mt-1 font-semibold text-slate-50">
                     Kuala Lumpur, Malaysia
                   </dd>
                 </div>
                 <div>
-                  <dt className="flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.18em] text-slate-400">
-                    <Users className="h-4 w-4 text-sky-400" />
+                  <dt className="flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.18em] text-slate-300">
+                    <Users className="h-4 w-4 text-teal-300" />
                     Attendees
                   </dt>
-                  <dd className="mt-1 font-semibold text-slate-100">
+                  <dd className="mt-1 font-semibold text-slate-50">
                     800+ leaders
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-[11px] font-medium uppercase tracking-[0.18em] text-slate-400">
+                  <dt className="text-[11px] font-medium uppercase tracking-[0.18em] text-slate-300">
                     Focus
                   </dt>
-                  <dd className="mt-1 font-semibold text-slate-100">
+                  <dd className="mt-1 font-semibold text-slate-50">
                     AI · Cloud · Fintech · Deep Tech
                   </dd>
                 </div>
@@ -110,25 +121,25 @@ export default function Home() {
             <motion.div
               initial={{ opacity: 0, scale: 0.9, y: 24 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ duration: 0.9, delay: 0.2, ease: "easeOut" }}
-              className="relative mt-4 w-full overflow-hidden rounded-3xl border border-slate-800/80 bg-slate-900/70 p-6 shadow-[0_40px_120px_rgba(15,23,42,0.9)] backdrop-blur"
+              transition={{ duration: 0.9, delay: 0.2, ease: easeOut }}
+              className="relative mt-4 w-full overflow-hidden rounded-3xl border border-teal-400/40 bg-slate-900/70 p-6 shadow-[0_40px_140px_rgba(15,23,42,1)] backdrop-blur"
             >
-              <div className="pointer-events-none absolute -left-24 -top-32 h-64 w-64 rounded-full bg-cyan-500/20 blur-3xl" />
-              <div className="pointer-events-none absolute -right-20 bottom-[-72px] h-64 w-64 rounded-full bg-emerald-500/10 blur-3xl" />
+              <div className="pointer-events-none absolute -left-24 -top-32 h-64 w-64 rounded-full bg-teal-400/25 blur-3xl" />
+              <div className="pointer-events-none absolute -right-20 bottom-[-72px] h-64 w-64 rounded-full bg-violet-500/25 blur-3xl" />
 
               <div className="relative space-y-4">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-400">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-300">
                   Tech in Malaysia · 2026
                 </p>
-                <p className="text-sm text-slate-200">
-                  Where <span className="text-cyan-300">deep tech</span>,{" "}
-                  <span className="text-emerald-300">policy</span>, and{" "}
-                  <span className="text-sky-300">capital</span> meet to design
+                <p className="text-sm text-slate-100">
+                  Where <span className="text-teal-300">deep tech</span>,{" "}
+                  <span className="text-violet-300">policy</span>, and{" "}
+                  <span className="text-teal-200">capital</span> meet to design
                   Malaysia&apos;s next decade of innovation.
                 </p>
 
                 <div className="grid grid-cols-2 gap-3 pt-2 text-xs text-slate-200">
-                  <div className="rounded-2xl border border-slate-700/60 bg-slate-900/60 p-3">
+                  <div className="rounded-2xl border border-slate-700/70 bg-slate-950/70 p-3">
                     <p className="text-[11px] font-medium text-slate-400">
                       Curated stages
                     </p>
@@ -136,7 +147,7 @@ export default function Home() {
                       Main Hall · Builders Lab · Policy Forum
                     </p>
                   </div>
-                  <div className="rounded-2xl border border-slate-700/60 bg-slate-900/60 p-3">
+                  <div className="rounded-2xl border border-slate-700/70 bg-slate-950/70 p-3">
                     <p className="text-[11px] font-medium text-slate-400">
                       Experience
                     </p>
@@ -148,7 +159,8 @@ export default function Home() {
               </div>
             </motion.div>
           </div>
-        </motion.section>
+        </div>
+      </motion.section>
 
         {/* About */}
         <motion.section
@@ -271,7 +283,6 @@ export default function Home() {
           Registration opens soon. Join the early list by integrating your own form or provider
           here.
         </section>
-      </div>
-    </main>
+    </div>
   );
 }
