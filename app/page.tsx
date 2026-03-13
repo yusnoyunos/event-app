@@ -4,7 +4,11 @@ import { ArrowRight, CalendarDays, MapPin, Users } from "lucide-react";
 
 const heroVariant = {
   hidden: { opacity: 0, y: 32 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, ease: "easeOut" },
+  },
 };
 
 const sectionVariant = {
@@ -12,7 +16,11 @@ const sectionVariant = {
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: 0.2 + i * 0.15, duration: 0.7, ease: [0.16, 1, 0.3, 1] },
+    transition: {
+      delay: 0.2 + i * 0.15,
+      duration: 0.7,
+      ease: "easeOut",
+    },
   }),
 };
 
@@ -108,7 +116,7 @@ export default function Home() {
             <motion.div
               initial={{ opacity: 0, scale: 0.9, y: 24 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.9, delay: 0.2, ease: "easeOut" }}
               className="relative mt-4 w-full overflow-hidden rounded-3xl border border-slate-800/80 bg-slate-900/70 p-6 shadow-[0_40px_120px_rgba(15,23,42,0.9)] backdrop-blur"
             >
               <div className="pointer-events-none absolute -left-24 -top-32 h-64 w-64 rounded-full bg-cyan-500/20 blur-3xl" />
