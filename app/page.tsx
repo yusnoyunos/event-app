@@ -2,14 +2,7 @@
 import { motion, Variants } from "framer-motion";
 import { ArrowRight, CalendarDays, MapPin, Users } from "lucide-react";
 
-const heroVariant: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { 
-    opacity: 1, 
-    y: 0, 
-    transition: { duration: 0.5, ease: "easeOut" } 
-  }
-};
+ 
 
 const sectionVariant = {
   hidden: { opacity: 0, y: 40 },
@@ -30,9 +23,9 @@ export default function Home() {
       <div className="mx-auto flex min-h-screen max-w-6xl flex-col px-4 pb-16 pt-24 sm:px-6 md:px-10 lg:px-12 lg:pt-28">
         {/* Hero */}
         <motion.section
-          initial="hidden"
-          animate="visible"
-          variants={heroVariant}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
           className="flex flex-1 flex-col justify-center gap-10 pb-16"
         >
           <div className="inline-flex items-center gap-2 self-start rounded-full border border-slate-800/80 bg-slate-900/60 px-3 py-1 text-xs font-medium text-slate-300 shadow-[0_0_0_1px_rgba(15,23,42,0.8)] backdrop-blur">
