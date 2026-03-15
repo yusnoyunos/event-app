@@ -37,37 +37,36 @@
           className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-slate-100`}
         >
           <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900/80 to-black">
-            <header className="sticky top-0 z-30 border-b border-slate-800/80 bg-slate-950/70 backdrop-blur">
-              <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 text-sm text-slate-200 sm:px-6 md:px-10 lg:px-12">
+            <header className="sticky top-0 z-30 border-b border-sky-400/15 bg-slate-950/82 backdrop-blur-xl">
+              <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 text-sm text-slate-200 sm:px-6 md:px-10 lg:px-12">
               <Link href="/" className="flex items-center gap-2 group">
-                {/* MOBILE: h-10 w-10 | DESKTOP: md:h-16 md:w-16 */}
-                  <div className="relative h-12 w-12 transition-transform md:h-16 md:w-16 group-hover:scale-105">
+                  <div className="relative h-14 w-14 sm:h-16 sm:w-16 md:h-20 md:w-20 transition-transform duration-300 group-hover:scale-105">
                     <Image 
-                            src="/TIM-Logo.png" 
+                      src="/TIM-Logo.png" 
                       alt="Tech in Malaysia Logo"
                       fill
                       priority
-                      className="object-contain object-left" 
+                      className="object-contain drop-shadow-[0_0_24px_rgba(56,189,248,0.38)]" 
                     />
                   </div>
                 </Link>
 
-                <nav className="flex items-center gap-6 text-xs font-medium text-slate-300 sm:text-sm">
+                <nav className="flex items-center gap-4 text-xs font-semibold uppercase tracking-[0.14em] text-slate-300 sm:gap-6 sm:text-sm">
                   <Link
                     href="/#about"
-                    className="transition-colors hover:text-teal-300"
+                    className="transition-colors hover:text-sky-300"
                   >
                     About
                   </Link>
                   <Link
                     href="/#schedule"
-                    className="transition-colors hover:text-teal-300"
+                    className="transition-colors hover:text-sky-300"
                   >
                     Schedule
                   </Link>
                   <Link
                     href="/speakers"
-                    className="rounded-full border border-slate-700/80 bg-slate-900/80 px-3 py-1.5 text-xs font-semibold text-slate-100 shadow-sm transition-colors hover:border-violet-400 hover:text-teal-200 sm:text-sm"
+                    className="rounded-full border border-sky-400/25 bg-slate-900/90 px-3 py-1.5 text-xs font-semibold text-slate-100 shadow-[0_0_24px_rgba(56,189,248,0.12)] transition-colors hover:border-sky-300 hover:text-sky-200 sm:text-sm"
                   >
                     Speakers
                   </Link>
@@ -75,7 +74,7 @@
               </div>
             </header>
 
-            <main className="pb-16">{children}</main>
+            <main className="pb-14">{children}</main>
           </div>
         </body>
       </html>
